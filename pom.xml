@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      
+    <modelVersion>4.0.0</modelVersion>
+      
+    <parent>
+            
+        <groupId>org.springframework.boot</groupId>
+            
+        <artifactId>spring-boot-starter-parent</artifactId>
+            
+        <version>3.1.5</version>
+          
+    </parent>
+      
+    <groupId>com.elsevier.ppe.test</groupId>
+      
+    <artifactId>elsevier-ppe-browserstack</artifactId>
+      
+    <version>1.0.0-SNAPSHOT</version>
+      
+    <name>elsevier-ppe-browserstack</name>
+      
+    <description>PPE Issue Compilation Acceptance Tests</description>
+      
+    <properties>
+            
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            
+        <serenity.version>4.0.18</serenity.version>
+            
+        <serenity.cucumber.version>4.0.18</serenity.cucumber.version>
+            
+        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+            
+        <junit.platform.version>1.10.0</junit.platform.version>
+            
+        <cucumber.version>7.14.0</cucumber.version>
+            
+        <springframework.cloud.version>2022.0.3</springframework.cloud.version>
+            
+        <maven.compiler.source>1.8</maven.compiler.source>
+            
+        <maven.surefire.plugin.version>3.2.1</maven.surefire.plugin.version>
+            
+        <maven.failsafe.plugin.version>3.2.1</maven.failsafe.plugin.version>
+            
+        <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
+            
+        <maven.compiler.source.version>17</maven.compiler.source.version>
+            
+        <maven.compiler.target.version>17</maven.compiler.target.version>
+            
+        <org.projectlombok.version>1.18.26</org.projectlombok.version>
+            
+        <encoding>UTF-8</encoding>
+            
+        <browserstack.local.version>1.1.4</browserstack.local.version>
+            
+        <browserstack.key>browserstackKey</browserstack.key>
+            
+        <browserstack.user>browserstackUser</browserstack.user>
+            
+        <browserstack.url>https://${browserstack.user}:${browserstack.key}@hub.browserstack.com/wd/hub</browserstack.url>
+            
+        <maven.compiler.target>1.8</maven.compiler.target>
+          
+    </properties>
+      
+    <dependencyManagement>
+            
+        <dependencies>
+                  
+            <dependency>
+                        
+                <groupId>org.springframework.cloud</groupId>
+                        
+                <artifactId>spring-cloud-dependencies</artifactId>
+                        
+                <version>${springframework.cloud.version}</version>
+                        
+                <type>pom</type>
+                        
+                <scope>import</scope>
+                      
+            </dependency>
+                
+        </dependencies>
+          
+    </dependencyManagement>
+      
+    <dependencies>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.boot</groupId>
+                  
+            <artifactId>spring-boot-starter</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.boot</groupId>
+                  
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.boot</groupId>
+                  
+            <artifactId>spring-boot-starter-test</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.boot</groupId>
+                  
+            <artifactId>spring-boot-starter-web</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.cloud</groupId>
+                  
+            <artifactId>spring-cloud-starter-config</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.springframework.cloud</groupId>
+                  
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-core</artifactId>
+                  
+            <version>${serenity.version}</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-cucumber</artifactId>
+                  
+            <version>${serenity.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-rest-assured</artifactId>
+                  
+            <version>${serenity.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-spring</artifactId>
+                  
+            <version>${serenity.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>io.cucumber</groupId>
+                  
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+                  
+            <version>${cucumber.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.junit.platform</groupId>
+                  
+            <artifactId>junit-platform-suite</artifactId>
+                  
+            <version>${junit.platform.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>com.hierynomus</groupId>
+                  
+            <artifactId>sshj</artifactId>
+                  
+            <version>0.36.0</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>commons-io</groupId>
+                  
+            <artifactId>commons-io</artifactId>
+                  
+            <version>2.13.0</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+                  
+            <artifactId>jackson-datatype-jsr310</artifactId>
+                  
+            <version>2.15.2</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.awaitility</groupId>
+                  
+            <artifactId>awaitility</artifactId>
+                  
+            <version>4.2.0</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.awaitility</groupId>
+                  
+            <artifactId>awaitility-proxy</artifactId>
+                  
+            <version>3.1.6</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.glassfish.jaxb</groupId>
+                  
+            <artifactId>jaxb-runtime</artifactId>
+                  
+            <version>4.0.3</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>org.projectlombok</groupId>
+                  
+            <artifactId>lombok</artifactId>
+                  
+            <version>1.18.26</version>
+                  
+            <scope>provided</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-ensure</artifactId>
+                  
+            <version>${serenity.version}</version>
+                  
+            <scope>test</scope>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>io.rest-assured</groupId>
+                  
+            <artifactId>rest-assured</artifactId>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-screenplay</artifactId>
+                  
+            <version>${serenity.version}</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>net.serenity-bdd</groupId>
+                  
+            <artifactId>serenity-screenplay-webdriver</artifactId>
+                  
+            <version>${serenity.version}</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>com.browserstack</groupId>
+                  
+            <artifactId>browserstack-local-java</artifactId>
+                  
+            <version>${browserstack.local.version}</version>
+                
+        </dependency>
+            
+        <dependency>
+                  
+            <groupId>com.browserstack</groupId>
+                  
+            <artifactId>browserstack-java-sdk</artifactId>
+                  
+            <version>LATEST</version>
+                  
+            <scope>compile</scope>
+                
+        </dependency>
+          
+    </dependencies>
+      
+    <build>
+            
+        <plugins>
+                  
+            <plugin>
+                        
+                <groupId>org.springframework.boot</groupId>
+                        
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                      
+            </plugin>
+                  
+            <plugin>
+                        
+                <groupId>org.apache.maven.plugins</groupId>
+                        
+                <artifactId>maven-surefire-plugin</artifactId>
+                        
+                <version>${maven.surefire.plugin.version}</version>
+                        
+                <configuration>
+                              
+                    <skip>true</skip>
+                    <argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+                            
+                </configuration>
+                      
+            </plugin>
+                  
+            <plugin>
+                        
+                <groupId>org.apache.maven.plugins</groupId>
+                        
+                <artifactId>maven-failsafe-plugin</artifactId>
+                        
+                <version>${maven.failsafe.plugin.version}</version>
+                        
+                <configuration>
+                              
+                    <includes>
+                                    
+                        <include>**/*Test.java</include>
+                                    
+                        <include>**/SpringRunnerTests.java</include>
+                                    
+                        <include>**/*TestSuite.java</include>
+                                    
+                        <include>**/When*.java</include>
+                                  
+                    </includes>
+                              
+                    <parallel>classes</parallel>
+                              
+                    <parallel>methods</parallel>
+                              
+                    <argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"
+-Xmx1024m</argLine>
+                              
+                    <failIfNoTests>true</failIfNoTests>
+                              
+                    <threadCount>${parallel.tests}</threadCount>
+                              
+                    <reuseForks>false</reuseForks>
+                              
+                    <forkCount>1</forkCount>
+                              
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                            
+                </configuration>
+                        
+                <executions>
+                              
+                    <execution>
+                                    
+                        <goals>
+                                          
+                            <goal>integration-test</goal>
+                                          
+                            <goal>verify</goal>
+                                        
+                        </goals>
+                                  
+                    </execution>
+                            
+                </executions>
+                      
+            </plugin>
+                  
+            <plugin>
+                        
+                <groupId>org.apache.maven.plugins</groupId>
+                        
+                <artifactId>maven-compiler-plugin</artifactId>
+                        
+                <version>${maven.compiler.plugin}</version>
+                        
+                <configuration>
+                              
+                    <source>${maven.compiler.source.version}</source>
+                              
+                    <target>${maven.compiler.target.version}</target>
+                            
+                </configuration>
+                      
+            </plugin>
+                  
+            <plugin>
+                        
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                        
+                <artifactId>serenity-maven-plugin</artifactId>
+                        
+                <version>${serenity.version}</version>
+                        
+                <configuration>
+                              
+                    <tags>${tags}</tags>
+                            
+                </configuration>
+                        
+                <dependencies>
+                              
+                    <dependency>
+                                    
+                        <groupId>net.serenity-bdd</groupId>
+                                    
+                        <artifactId>serenity-core</artifactId>
+                                    
+                        <version>${serenity.version}</version>
+                                  
+                    </dependency>
+                            
+                </dependencies>
+                        
+                <executions>
+                              
+                    <execution>
+                                    
+                        <id>serenity-reports</id>
+                                    
+                        <phase>post-integration-test</phase>
+                                    
+                        <goals>
+                                          
+                            <goal>aggregate</goal>
+                                        
+                        </goals>
+                                  
+                    </execution>
+                            
+                </executions>
+                      
+            </plugin>
+                  
+            <plugin>
+                        
+                <artifactId>maven-dependency-plugin</artifactId>
+                        
+                <version>3.3.0</version>
+                        
+                <executions>
+                              
+                    <execution>
+                                    
+                        <id>getClasspathFilenames</id>
+                                    
+                        <goals>
+                                          
+                            <goal>properties</goal>
+                                        
+                        </goals>
+                                  
+                    </execution>
+                            
+                </executions>
+                      
+            </plugin>
+                
+        </plugins>
+          
+    </build>
+      
+    <profiles>
+            
+        <profile>
+                  
+            <id>browserstack-chrome</id>
+                  
+            <build>
+                        
+                <plugins>
+                              
+                    <plugin>
+                                    
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                                    
+                        <version>${maven.failsafe.plugin.version}</version>
+                                    
+                        <configuration>
+                                          
+                            <systemPropertyVariables>
+                                                
+                                <profileId>browserstack-chrome</profileId>
+                                                
+                                <browserstack.localIdentifier>browserstack-chrome-${environment}-${maven.build.timestamp}-${surefire.forkNumber}</browserstack.localIdentifier>
+                                                
+                                <browserstack.local>true</browserstack.local>
+                                                
+                                <browserstack.key>${browserstack.key}</browserstack.key>
+                                                
+                                <browserstack.url>${browserstack.url}</browserstack.url>
+                                                
+                                <browserstack.project>PPE</browserstack.project>
+                                                
+                                <browserstack.os>windows</browserstack.os>
+                                                
+                                <browserstack.os_version>11</browserstack.os_version>
+                                                
+                                <browserstack.browser_version>128.0</browserstack.browser_version>
+                                                
+                                <browserstack.browser>Chrome</browserstack.browser>
+                                                
+                                <browserstack.video>false</browserstack.video>
+                                                
+                                <browserstack.debug>false</browserstack.debug>
+                                                
+                                <browserstack.console>disable</browserstack.console>
+                                                
+                                <browserstack.resolution>2048x1536</browserstack.resolution>
+                                                
+                                <browserstack.idleTimeout>300</browserstack.idleTimeout>
+                                                
+                                <webdriver.wait.for.timeout>60000</webdriver.wait.for.timeout>
+                                                
+                                <webdriver.timeouts.implicitlywait>60000</webdriver.timeouts.implicitlywait>
+                                              
+                            </systemPropertyVariables>
+                            <argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+                                        
+                        </configuration>
+                                    
+                        <executions>
+                                          
+                            <execution>
+                                                
+                                <goals>
+                                                      
+                                    <goal>integration-test</goal>
+                                                      
+                                    <goal>verify</goal>
+                                                    
+                                </goals>
+                                              
+                            </execution>
+                                        
+                        </executions>
+                                  
+                    </plugin>
+                            
+                </plugins>
+                      
+            </build>
+                
+        </profile>
+            
+        <profile>
+                  
+            <id>local-chrome</id>
+                  
+            <build>
+                        
+                <plugins>
+                              
+                    <plugin>
+                                    
+                        <groupId>com.lazerycode.selenium</groupId>
+                                    
+                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                                    
+                        <version>1.0.18</version>
+                                    
+                        <configuration>
+                                          
+                            <customRepositoryMap>src/test/resources/RepositoryMap.xml</customRepositoryMap>
+                                          
+                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
+                                          
+                            <rootStandaloneServerDirectory>src/test/resources/binaries</rootStandaloneServerDirectory>
+                                          
+                            <downloadedZipFileDirectory>src/test/resources/zips</downloadedZipFileDirectory>
+                                          
+                            <overwriteFilesThatExist>false</overwriteFilesThatExist>
+                                        
+                        </configuration>
+                                    
+                        <executions>
+                                          
+                            <execution>
+                                                
+                                <goals>
+                                                      
+                                    <goal>selenium</goal>
+                                                    
+                                </goals>
+                                              
+                            </execution>
+                                        
+                        </executions>
+                                  
+                    </plugin>
+                              
+                    <plugin>
+                                    
+                        <groupId>org.apache.maven.plugins</groupId>
+                                    
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                                    
+                        <version>${maven.failsafe.plugin.version}</version>
+                                    
+                        <configuration>
+                                          
+                            <systemProperties>
+                                                
+                                <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                                              
+                            </systemProperties>
+                            <argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+                                          
+                            <systemPropertyVariables>
+                                                
+                                <profileId>local-chrome</profileId>
+                                                
+                                <webdriver.driver>chrome</webdriver.driver>
+                                
+                                <!--                <chrome.switches>&#45;&#45;headless=old &#45;&#45;window-size=2048,1536</chrome.switches>-->
+                                                
+                                <webdriver.wait.for.timeout>60000</webdriver.wait.for.timeout>
+                                                
+                                <webdriver.timeouts.implicitlywait>10000</webdriver.timeouts.implicitlywait>
+                                              
+                            </systemPropertyVariables>
+                                          
+                            <includes>
+                                                
+                                <include>**/*Test.java</include>
+                                                
+                                <include>**/SpringRunnerTests.java</include>
+                                                
+                                <include>**/*TestSuite.java</include>
+                                                
+                                <include>**/When*.java</include>
+                                              
+                            </includes>
+                                          
+                            <parallel>classes</parallel>
+                                          
+                            <parallel>methods</parallel>
+                                          
+                            <useUnlimitedThreads>true</useUnlimitedThreads>
+                                        
+                        </configuration>
+                                    
+                        <executions>
+                                          
+                            <execution>
+                                                
+                                <goals>
+                                                      
+                                    <goal>integration-test</goal>
+                                                      
+                                    <goal>verify</goal>
+                                                    
+                                </goals>
+                                              
+                            </execution>
+                                        
+                        </executions>
+                                  
+                    </plugin>
+                              
+                    <plugin>
+                                    
+                        <groupId>org.apache.maven.plugins</groupId>
+                                    
+                        <artifactId>maven-compiler-plugin</artifactId>
+                                    
+                        <version>${maven.compiler.plugin}</version>
+                                    
+                        <configuration>
+                                          
+                            <source>${maven.compiler.source.version}</source>
+                                          
+                            <target>${maven.compiler.target.version}</target>
+                                        
+                        </configuration>
+                                  
+                    </plugin>
+                              
+                    <plugin>
+                                  
+                        <groupId>net.serenity-bdd.maven.plugins</groupId>
+                                  
+                        <artifactId>serenity-maven-plugin</artifactId>
+                                    
+                        <version>${serenity.version}</version>
+                                    
+                        <configuration>
+                                          
+                            <tags>${tags}</tags>
+                                        
+                        </configuration>
+                                    
+                        <executions>
+                                          
+                            <execution>
+                                                
+                                <id>serenity-reports</id>
+                                                
+                                <phase>post-integration-test</phase>
+                                                
+                                <goals>
+                                                      
+                                    <goal>aggregate</goal>
+                                                    
+                                </goals>
+                                              
+                            </execution>
+                                        
+                        </executions>
+                                  
+                    </plugin>
+                            
+                </plugins>
+                      
+            </build>
+                
+        </profile>
+          
+    </profiles>
+    
+</project>

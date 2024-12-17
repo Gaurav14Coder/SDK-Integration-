@@ -1,0 +1,5 @@
+To recreate the failing case in BrowserStack, use command: 
+`./mvnw clean verify -P browserstack-chrome -Dissn.debug=true -Denvironment=sit -Dbrowserstack.video=true '-Dbrowserstack.build=Pipeline sit build 128' -Dparallel.tests=1 -Dfeature.toggle=false -Dbrowserstack.localIdentifier=a8d8ad97-2ea7-45a5-afbf-61e5dee9c3f3 '-Dcucumber.filter.tags=(@browserstackTest) and (not (@ignore or @Manual or @manualKeyboard or @local))'`
+
+To see test running successfully in local, use command:
+`./mvnw clean verify -P local-chrome -Dissn.debug=true -Denvironment=sit -Dparallel.tests=1 '-Dcucumber.filter.tags=(@browserstackTest) and (not (@ignore or @Manual or @manualKeyboard or @local))' -Dwebdriver.chrome.driver=/Users/<userDirectory>/elsevier-ppe-browserstack/src/test/resources/binaries/osx/googlechrome/64bit/chromedriver`
